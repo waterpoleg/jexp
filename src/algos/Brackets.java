@@ -19,7 +19,7 @@ public class Brackets {
                 }
             }
         }
-        return count % 2 == 0;
+        return count == 0;
     }
 
     public static boolean pairedBrackets2(String brackets) {
