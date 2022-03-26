@@ -11,12 +11,11 @@ public class Brackets {
             return false;
         }
         for (char ch : brackets.toCharArray()) {
+            //count = ch == '(' ? ++count : --count;
             if (ch == '(') {
                 count++;
             } else {
-                if (ch == ')') {
-                    count--;
-                }
+                count--;
             }
         }
         return count == 0;
@@ -28,17 +27,13 @@ public class Brackets {
             return false;
         }
         for (char ch : brackets.toCharArray()) {
-            if (ch == '(') {
-                deque.addFirst(ch);
+            if (!deque.isEmpty() && (deque.peekFirst() != ch)) {
+                deque.removeFirst();
             } else {
-                if (!deque.isEmpty() && (deque.peekFirst() == '(' && ch == ')')) {
-                    deque.removeFirst();
-                } else {
-                    return false;
-                }
+                deque.addFirst(ch);
             }
         }
-        return true;
+        return deque.isEmpty();
     }
 
     public static void main(String[] args) {
@@ -46,5 +41,10 @@ public class Brackets {
         System.out.println(pairedBrackets2("((()))")); // true
         System.out.println(pairedBrackets("((())))")); // false
         System.out.println(pairedBrackets2("((())))")); // false
+        System.out.println("-");
+        System.out.println(pairedBrackets(")))(((")); // true
+        System.out.println(pairedBrackets2("((())))")); // false
+        System.out.println(pairedBrackets("))))")); // false
+        System.out.println(pairedBrackets2("))))")); // false
     }
 }
