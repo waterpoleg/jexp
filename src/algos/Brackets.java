@@ -11,7 +11,6 @@ public class Brackets {
             return false;
         }
         for (char ch : brackets.toCharArray()) {
-            //count = ch == '(' ? ++count : --count;
             if (ch == '(') {
                 count++;
             } else {
